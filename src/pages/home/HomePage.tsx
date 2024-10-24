@@ -1,9 +1,6 @@
-import {UseEvent} from 'src/use/event/UseEvent'
+import {useTickTok} from 'src/use/tick-tok'
 
 export const HomePage = () => {
-  return (
-    <main className="text-purple">
-      <UseEvent />
-    </main>
-  )
+  const time = useTickTok()
+  return <main className="text-purple flex flex-col gap-2 w-20rem">{time}</main>
 }
