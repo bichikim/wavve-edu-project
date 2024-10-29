@@ -1,6 +1,6 @@
 import {useState, useEffect, useRef} from 'react'
 
-export const useTickTok = () => {
+export const useTickTok = (isRun: boolean) => {
   const [time, setTime] = useState(Date.now())
   const tickRef = useRef<any>()
   useEffect(() => {
@@ -8,7 +8,9 @@ export const useTickTok = () => {
       setTime(Date.now())
       tickRef.current = requestAnimationFrame(loop)
     }
-    tickRef.current = requestAnimationFrame(loop)
+    if (isRun) {
+      tickRef.current = requestAnimationFrame(loop)
+    }
     return () => {
       cancelAnimationFrame(tickRef.current)
     }
