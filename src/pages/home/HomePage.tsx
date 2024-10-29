@@ -1,7 +1,6 @@
 import {useState} from 'react'
 import {Clock, ClockHand, ClockHandBackground} from 'src/components/Clock'
 import {HandyInput} from 'src/components/Input'
-
 export const HomePage = () => {
   const [timeValue, setTimeValue] = useState({
     total: 60000,
@@ -42,7 +41,6 @@ export const HomePage = () => {
         <ClockHand className="absolute color-white top-0 left-0" />
         <ClockHandBackground className="color-white absolute top-50% left-50% w-20% h-20% translate--50% drop-shadow-md" />
       </Clock>
-      
       <button onClick={handleReset}>reset!!!</button>
       <HandyInput value={timeValue.total} onValueChange={handleChangeTotal} />
       <button onClick={hadnleToggleStart}>{timeValue.isStart ? 'stop' : 'start'}</button>
