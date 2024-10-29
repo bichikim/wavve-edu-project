@@ -42,6 +42,7 @@ export const HomePage = () => {
         <ClockHand className="absolute color-white top-0 left-0" />
         <ClockHandBackground className="color-white absolute top-50% left-50% w-20% h-20% translate--50% drop-shadow-md" />
       </Clock>
+      
       <button onClick={handleReset}>reset!!!</button>
       <HandyInput value={timeValue.total} onValueChange={handleChangeTotal} />
       <button onClick={hadnleToggleStart}>{timeValue.isStart ? 'stop' : 'start'}</button>
