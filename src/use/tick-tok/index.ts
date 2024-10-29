@@ -1,16 +1,18 @@
 import {useState, useEffect, useRef} from 'react'
 
-export const useTickTok = (updateTime = 500) => {
-  const [time, setTime] = useState(0)
+export const useTickTok = () => {
+  const [time, setTime] = useState(Date.now())
   const tickRef = useRef<any>()
   useEffect(() => {
-    tickRef.current = setInterval(() => {
+    const loop = () => {
       setTime(Date.now())
-    }, updateTime)
-    return () => {
-      clearInterval(tickRef.current)
+      tickRef.current = requestAnimationFrame(loop)
     }
-  }, [updateTime])
+    tickRef.current = requestAnimationFrame(loop)
+    return () => {
+      cancelAnimationFrame(tickRef.current)
+    }
+  })
 
   return time
 }
